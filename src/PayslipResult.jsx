@@ -7,7 +7,7 @@ function PayslipResult({
   overtimePay,
   gross,
   nightPay,
-  holidayPay,
+  
  
 }) {
   return (
@@ -16,7 +16,7 @@ function PayslipResult({
       <p><strong>Base Salary:</strong> {formatJPY(baseSalary)}</p>
       <p><strong>Overtime Pay:</strong> {formatJPY(overtimePay)}</p>
       <p><strong>Night Work Pay:</strong> {formatJPY(nightPay)}</p>
-<p><strong>Holiday Work Pay:</strong> {formatJPY(holidayPay)}</p>
+{/* <p><strong>Holiday Work Pay:</strong> {formatJPY(holidayPay)}</p> */}
       
       {/* <p><strong>Total of Day Shift: </strong>{formatJPY(dayShift)}</p>
       <p><strong>Total of Night Shift: </strong>{formatJPY(nightShift)}</p> */}
