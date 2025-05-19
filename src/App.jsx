@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import PayslipForm from "./PayslipForm";
 import PayslipResult from "./PayslipResult";
+import PayslipResult2 from "./PayslipResult2";
 
 function App() {
   const [salary, setSalary] = useState(null);
@@ -52,7 +53,7 @@ function App() {
     <div style={{ padding: "2rem", fontFamily: "Arial" }}>
       <h1>Payslip Calculator (Daily, Hourly, Overtime Night shift and Day shift)</h1>
       <PayslipForm onCalculate={calculatePayslip} />
-      {salary && <PayslipResult {...salary} />}
+      {salary && <PayslipResult2 {...salary} />}
     </div>
   );
 }
