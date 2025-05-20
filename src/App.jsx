@@ -8,17 +8,23 @@ function App() {
 
   const calculatePayslip = ({ days, hours, wage, overtimeHours, overtimePercent, holidayHours,nightPercent,nightDifferential,
     nightOverTime,
-    nightDifferentialPercent }) => {
-    const baseSalary = days * hours * wage;
-   
+    nightDifferentialPercent,hoursLate }) => {   
+      
+     const lateHoursDeduction = hoursLate * wage 
+    const baseSalary =  days * (hours - hoursLate) * wage ;
+ 
     const overtimePay =   overtimeHours * wage  +(overtimePercent*overtimeHours*10) 
     const holidayPay = holidayHours * wage * 30;
     //night
     // const normalNightRate = nightHours * wage;
+    const nightDifferentialRate  = nightDifferential * wage;  
+    const nightDifferentialPercents = nightDifferentialRate +(nightDifferentialPercent*nightDifferential*10);
     const overtimeNightRate = nightOverTime * wage
     const overtimeNightRatePercent = overtimeNightRate +(nightPercent*nightOverTime*10);
-    const nightDifferentialRate  = nightDifferential * wage;
-    const nightDifferentialPercents = nightDifferentialRate +(nightDifferentialPercent*nightDifferential*10);;
+    
+  
+    // const diffentialAndOvertimePerCent = nightDifferentialPercent + overtimeNightRatePercent
+    // const nightDifferentialPercentss = nightDifferentialRate +(diffentialAndOvertimePerCent*nightDifferential*10);
 
     const nightPay = overtimeNightRatePercent+nightDifferentialPercents
     
@@ -44,7 +50,8 @@ function App() {
       holidayPay,
       gross,
       dayShift,
-      nightShift
+      nightShift,
+      lateHoursDeduction,
     });
   };
   

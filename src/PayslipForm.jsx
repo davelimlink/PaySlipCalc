@@ -12,7 +12,8 @@ const [form, setForm] = useState({
   nightPercent: "", // default
   nightDifferential:"",
   nightOverTime:"",
-  nightDifferentialPercent:""
+  nightDifferentialPercent:"",
+  hoursLate:""
 });
 
 const handleChange = (e) => {
@@ -28,6 +29,7 @@ const handleChange = (e) => {
   
     const days = parseFloat(form.days);
     const hours = parseFloat(form.hours);
+    const hoursLate = parseFloat(form.hoursLate) || 0;
     const wage = parseFloat(form.wage);
     const overtimeHours = parseFloat(form.overtimeHours) || 0;
     const overtimePercent = parseFloat(form.overtimePercent) || 0;
@@ -57,7 +59,8 @@ const handleChange = (e) => {
       holidayPercent,
       nightDifferential,
       nightOverTime,
-      nightDifferentialPercent
+      nightDifferentialPercent,
+      hoursLate
     });
   };
   
@@ -65,7 +68,7 @@ const handleChange = (e) => {
   return (
     <form onSubmit={handleSubmit}>
       {/* Day */}
-      <h4>Day Shift calculation</h4>
+      
       <div>
         <label>Working Days:</label><br />
         <input name="days" type="number" value={form.days} onChange={handleChange} required />
@@ -73,6 +76,10 @@ const handleChange = (e) => {
       <div>
         <label>Hours per Day:</label><br />
         <input name="hours" type="number" value={form.hours} onChange={handleChange} required />
+      </div>
+      <div>
+        <label>Hours Late</label><br />
+        <input name="hoursLate" type="number" value={form.hoursLate} onChange={handleChange}  />
       </div>
       <div>
         <label>Hourly Wage (JPY):</label><br />
@@ -88,7 +95,7 @@ const handleChange = (e) => {
       </div>
       
       {/* Night */}
-<h4>Night Shift calculation</h4>
+<h4>Night Shift Differential and Overtime Rate calculation</h4>
       {/* <div>
   <label>Night Work Normal Hours:</label><br />
   <input name="nightHours" type="number" value={form.nightHours} onChange={handleChange} />
