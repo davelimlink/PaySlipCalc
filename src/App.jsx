@@ -11,34 +11,40 @@ function App() {
     nightDifferentialPercent,hoursLate }) => {   
       
      const lateHoursDeduction = hoursLate * wage 
-    const baseSalary =  days * (hours - hoursLate) * wage ;
- 
-    const overtimePay =   overtimeHours * wage  +(overtimePercent*overtimeHours*10) 
+    const baseSalary =  days * hours * wage ;
+
+    //Overtime
+    const ot = overtimeHours * wage;
+//  overtimeHours * wage  +(overtimePercent*overtimeHours*10) 
+    const overtimePay =   (overtimePercent * ot/100) + ot
     const holidayPay = holidayHours * wage * 30;
     //night
     // const normalNightRate = nightHours * wage;
-    const nightDifferentialRate  = nightDifferential * wage;  
-    const nightDifferentialPercents = nightDifferentialRate +(nightDifferentialPercent*nightDifferential*10);
-    const overtimeNightRate = nightOverTime * wage
-    const overtimeNightRatePercent = overtimeNightRate +(nightPercent*nightOverTime*10);
+    // const nightDifferentialRate  = nightDifferential * wage;  
+    const nightDifferentialPercents = nightDifferential * wage+ (nightDifferentialPercent*nightDifferential*10);
+    // const overtimeNightRate = nightOverTime * wage
+    const nightDiffOtPercent = nightPercent + nightDifferentialPercent
+    const overtimeNightRatePercent = nightOverTime * wage+(nightDiffOtPercent*nightOverTime*10);
+    // const nightPay = overtimeNightRate +(nightDiffOtPercent*nightOverTime*10);
+    const nightPay = nightDifferentialPercents + overtimeNightRatePercent;
     
   
     // const diffentialAndOvertimePerCent = nightDifferentialPercent + overtimeNightRatePercent
     // const nightDifferentialPercentss = nightDifferentialRate +(diffentialAndOvertimePerCent*nightDifferential*10);
 
-    const nightPay = overtimeNightRatePercent+nightDifferentialPercents
+    // const overtimeNightRatePercent = overtimeNightRatePercent+nightDifferentialPercents
     
     //const nightPay = nightHours * wage  +(nightPercent*nightHours*10) 
 
     //Total day shift
-    const dayShift = baseSalary + overtimePay;
+    const dayShift = baseSalary + overtimePay - lateHoursDeduction;
     //Total night Shift
     const nightShift = baseSalary + nightPay
  
   // const grossDay =
   // const grossNight=
   
-    const gross = baseSalary + overtimePay + nightPay + holidayPay;
+    const gross = baseSalary + overtimePay + nightPay + holidayPay - lateHoursDeduction;
   
     
   
@@ -58,6 +64,7 @@ function App() {
 
   return (
     <div style={{ padding: "2rem", fontFamily: "Arial" }}>
+      <h4 style={{color: "red"}}>Phase 1: Testing</h4>
       <h1>Payslip Calculator (Daily, Hourly, Overtime Night shift and Day shift)</h1>
       <PayslipForm onCalculate={calculatePayslip} />
       {salary && <PayslipResult2 {...salary} />}

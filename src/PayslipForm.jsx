@@ -70,42 +70,44 @@ const handleChange = (e) => {
       {/* Day */}
       
       <div>
-        <label>Working Days:</label><br />
+        <label>Working Days: <span style={{color: "red"}}>How many days you work in 1 month.</span></label><br />
         <input name="days" type="number" value={form.days} onChange={handleChange} required />
       </div>
       <div>
-        <label>Hours per Day:</label><br />
+        <label>Hours per Day: <span style={{color: "red"}}>How many hours you work in 1 day.</span></label><br />
         <input name="hours" type="number" value={form.hours} onChange={handleChange} required />
       </div>
       <div>
-        <label>Hours Late</label><br />
+      
+        <label>Hours Late: <span style={{color: "red"}}>How many late hours you made in 1 month.</span></label><br />
         <input name="hoursLate" type="number" value={form.hoursLate} onChange={handleChange}  />
       </div>
       <div>
-        <label>Hourly Wage (JPY):</label><br />
+        <label>Hourly Wage (JPY): <span style={{color: "red"}}>Your hourly salary Ex: ¥1000</span></label><br />
         <input name="wage" type="number" value={form.wage} onChange={handleChange} required />
       </div>
       <div>
-        <label>Overtime Hours:</label><br />
+        <label>Overtime Hours: <span style={{color: "red"}}>How many hour/s of overtime you made in 1 month</span></label><br />
         <input name="overtimeHours" type="number" value={form.overtimeHours} onChange={handleChange} />
       </div>
       <div>
-        <label>Overtime Rate % (e.g. 25%):</label><br />
+        <label>Overtime Rate: <span style={{color: "red"}}>Your overtime rate/percentage in 1 hour Ex: 25%</span></label><br />
         <input name="overtimePercent" type="number" value={form.overtimePercent} onChange={handleChange} />
       </div>
       
       {/* Night */}
-<h4>Night Shift Differential and Overtime Rate calculation</h4>
+<h4>Night Shift Differential and Overtime Rate Calculation</h4>
       {/* <div>
   <label>Night Work Normal Hours:</label><br />
   <input name="nightHours" type="number" value={form.nightHours} onChange={handleChange} />
 </div> */}
 <div>
-  <label>Night Differential Hours:</label><br />
+  <label>Night Differential Hours: <span style={{color: "red"}}>How many hour/s is your Night Differential. excluding the overtime <br/> 
+  Ex: From 10pm to 12midnight = 2 hours in total</span></label><br />
   <input name="nightDifferential" type="number" value={form.nightDifferential} onChange={handleChange} />
 </div>
 <div>
-  <label>Night Work Differential Rate %  (e.g. 25%):</label><br />
+  <label>Night Shift/Work Differential Rate: <span style={{color: "red"}}>Night Shift/Work Differential Rate %  (e.g. 25%) Ex: 25%</span></label><br />
   <input
     name="nightDifferentialPercent"
     type="number"
@@ -115,11 +117,11 @@ const handleChange = (e) => {
   />
 </div>
 <div>
-  <label>Night Overtime Hours:</label><br />
+  <label>Night Shift Overtime Hours: <span style={{color: "red"}}>Night Shift/Work overtime in 1month</span></label><br />
   <input name="nightOverTime" type="number" value={form.nightOverTime} onChange={handleChange} />
 </div>
 <div>
-  <label>Night Work Overtime Rate %  (e.g. 30%):</label><br />
+  <label>Night Work Overtime Rate: <span style={{color: "red"}}>Night Shift/Work overtime Rate  Ex: 25%</span></label><br />
   <input
     name="nightPercent"
     type="number"
